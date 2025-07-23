@@ -11,15 +11,46 @@ This script scans your Git repository's commit history, extracts metadata (autho
 - 🔄 File diff search (planned)
 - 🔄 Full commit content search (planned)
 
+## Prerequisites
+
+- Python 3.10 or higher
+- pip
+
+To install Python and pip, run:
+
+```bash
+#!/usr/bin/env bash
+set -e
+
+OS="$(uname)"
+if [[ "$OS" == "Linux" ]]; then
+  sudo apt-get update && sudo apt-get install -y python3 python3-pip
+elif [[ "$OS" == "Darwin" ]]; then
+  brew install python
+else
+  echo "Unsupported OS. Please install Python 3.10+ and pip manually: https://python.org"
+  exit 1
+fi
+
+echo "Python version: $(python3 --version)"
+echo "pip version: $(pip3 --version)"
+```
+
 ## Installation
 
-1. Clone this repository
-2. Install dependencies:
+1. Clone this repository:
+```bash
+git clone https://github.com/yourusername/git-log-search.git
+cd git-log-search
+```
+2. Install dependencies (root folder):
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Quick Start
+
+From the root folder, run:
 
 ```bash
 # Get help
@@ -215,3 +246,14 @@ export OPENAI_API_KEY="your-api-key-here"
 - **Bug Investigation**: "When did we fix the login bug?"
 - **Refactoring History**: "When did we refactor the database layer?"
 - **Dependency Updates**: "When did we update React to version 18?"
+
+## Running the Example
+
+Ensure **Prerequisites are met** before running the example.
+
+To see a practical demonstration of how the tool works, you can run the example script provided in the repository. This script will run the typical workflow of the tool.
+
+Run the example script with the following command from the `root` folder:
+
+- Does not require any setup: `bash ./example/run-basic-example.sh`
+- Requires OpenAI API key: `bash ./example/run-recommended-example.sh`
