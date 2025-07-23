@@ -26,7 +26,7 @@ root_dir = ".tmp"
 # Utility to construct paths based on target folder
 def _get_embeddings_store_paths(target_dir: Path) -> tuple[Path, Path]:
     timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d%H%M%S")
-    node_name = target_dir.name.replace(" ", "_")
+    node_name = target_dir.resolve().name.replace(" ", "_")
     embed_filename = f"{root_dir}/{node_name}-embeddings-{timestamp}.json"
     chroma_dir = Path(f"{root_dir}/.git_gpt_chroma_db_{timestamp}")
     return Path(embed_filename), chroma_dir
